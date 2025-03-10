@@ -4,16 +4,34 @@
 # https://aka.ms/yaml
 
 trigger:
-- main
+- master
 
 pool:
   vmImage: ubuntu-latest
 
-steps:
-- script: echo Hello, world Tarlok Chand!
-  displayName: 'Run a one-line script'
+stages:
+  - stage: Build
+    jobs:
+    - job: BuildJob
+      steps:
+      - bash: echo "Do the Build"
+      - bash: hostname
+      - bash: echo $(Agent.OS)
+      - bash: echo $(Agent.WorkFolder)
+      - bash: java --version
+      - bash: mvn --version
+      - bash: echo $(Build.BuildNumber)
+      - bash: echo $(Build.StagingDirectory)
+      - bash: echo $(System.DefaultWorkingDirectory)
+      - bash: echo $(System.HostType)
+      - bash: echo $(Build.ArtifactStagingDirectory)
+      - bash: ls -R $(Build.ArtifactStagingDirectory)
+      - task: CopyFiles@2
+        inputs:
+          SourceFolder: '$(System.DefaultWorkingDirectory)'
+          Contents: |
+            **/*.yaml
+            **/*.tf
+          TargetFolder: '$(Build.StagingDirectory)'
+      - bash: ls -R $(Build.ArtifactStagingDirectory)
 
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
