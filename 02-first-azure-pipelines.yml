@@ -39,7 +39,7 @@ stages:
   
   - Stage: DEV
     jobs:
-    -job: DEV-BuildJob
-     steps:
-     - bash: "this is Dev build job"
-     
+    - job: DEV-BuildJob
+      steps:
+      - bash: "this is Dev build job"
+      
