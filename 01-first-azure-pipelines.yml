@@ -35,4 +35,11 @@ stages:
           TargetFolder: '$(Build.StagingDirectory)'
       - bash: ls -R $(Build.ArtifactStagingDirectory)
       - bash:  echo "Test the pipe line"
+      - task: PublishBuildArtifacts@1
+        inputs:
+          PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+          ArtifactName: 'drop'
+          publishLocation: 'Container'
+      - bash: echo "Build has been Publish "
+
 
