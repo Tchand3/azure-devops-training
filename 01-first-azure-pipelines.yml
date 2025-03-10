@@ -41,5 +41,5 @@ stages:
     jobs:
     - job: DEVBuildJob
       steps:
-      - bash: "this is Dev build job"
+      - bash: echo "this is Dev build job"
       
