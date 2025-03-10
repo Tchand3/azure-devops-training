@@ -37,9 +37,9 @@ stages:
           publishLocation: 'Container'
       - bash: echo "Build has been Publish "
   
-  - Stage: DEV
+  - stage: DEV
     jobs:
-    - job: DEV-BuildJob
+    - job: DEVBuildJob
       steps:
       - bash: "this is Dev build job"
       
