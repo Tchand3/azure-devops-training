@@ -34,4 +34,5 @@ stages:
             **/*.tf
           TargetFolder: '$(Build.StagingDirectory)'
       - bash: ls -R $(Build.ArtifactStagingDirectory)
+      - bash:  echo "Test the pipe line"
 
