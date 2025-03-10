@@ -5,7 +5,7 @@ trigger:
 strategy:
   matrix:
    linux:
-     imageName: "Redhat-latest"
+     imageName: "ubuntu-latest"
    mac:
       imageName: "macos-latest"
    windows:
