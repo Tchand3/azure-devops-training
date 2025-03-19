@@ -11,7 +11,20 @@ steps:
   inputs:
     provider: 'aws'
     command: 'init'
-    workingDirectory: '$(System.DefaultWorkingDirectory)/test'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/test/iam'
     backendServiceAWS: 'test'
     backendAWSBucketName: 'tarlok-s3-tes111'
     backendAWSKey: 'kubernetes-dev.tf'
+
+- task: TerraformTaskV4@4
+  inputs:
+    provider: 'aws'
+    command: 'plan'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/test/iam'
+    environmentServiceNameAWS: 'test'
+- task: TerraformTaskV4@4
+  inputs:
+    provider: 'aws'
+    command: 'apply'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/test/iam'
+    environmentServiceNameAWS: 'test'
