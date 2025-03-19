@@ -12,7 +12,11 @@ pool:
 steps:
 - script: echo Hello, world!
   displayName: 'Run a one-line script'
-- task: AWSCLI@1
+- task: TerraformTaskV4@4
   inputs:
-    regionName: 'ap-east-1'
-    awsCommand: 'aws s3 ls'
+    provider: 'aws'
+    command: 'init'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/test'
+    backendServiceAWS: 'test'
+    backendAWSBucketName: 'tarlok-s3-tes111'
+    backendAWSKey: 'kubernetes-dev.tf'
