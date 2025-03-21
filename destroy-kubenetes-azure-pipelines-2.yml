@@ -11,7 +11,15 @@ pool:
 
 steps:
 - script: echo Hello, world!
-  displayName: 'Run a one-line script' 
+  displayName: 'Run a one-line script'
+- task: TerraformTaskV4@4
+  inputs:
+    provider: 'aws'
+    command: 'init'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/test/iam'
+    backendServiceAWS: 'test'
+    backendAWSBucketName: 'tarlok-s3-tes111'
+    backendAWSKey: 'kubernetes-dev.tf'
 
 - task: TerraformTaskV4@4
   inputs:
