@@ -14,7 +14,7 @@ steps:
     workingDirectory: '$(System.DefaultWorkingDirectory)/test/iam'
     backendServiceAWS: 'test'
     backendAWSBucketName: 'tarlok-s3-tes111'
-    backendAWSKey: '/backend/teraform.tfstate'
+    backendAWSKey: 'backend/teraform.tfstate'
 
 - task: TerraformTaskV4@4
   inputs:
