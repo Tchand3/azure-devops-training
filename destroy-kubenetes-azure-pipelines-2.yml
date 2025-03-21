@@ -11,11 +11,11 @@ pool:
 
 steps:
 - script: echo Hello, world!
-  displayName: 'Run a one-line script'
+  displayName: 'Run a one-line script' 
 
 - task: TerraformTaskV4@4
   inputs:
     provider: 'aws'
-    command: 'destroy'
+    command: 'destroy' # this is testest
     workingDirectory: '$(System.DefaultWorkingDirectory)/test/iam'
     environmentServiceNameAWS: 'test'
