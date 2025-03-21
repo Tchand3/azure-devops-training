@@ -6,7 +6,7 @@ provider "aws" {
 terraform {
   backend "s3" {
     bucket = "tarlok-s3-tes111" # Will be overridden from build
-    key    = "path/to/my/key" # Will be overridden from build
+    key    = "backend/teraform.tfstate" # Will be overridden from build
     region = "us-east-1"
   }
 }
